@@ -1,134 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>UI.Vision Autostart</title>
+  <title>Open Tabs</title>
 </head>
 <body>
-<h3>Starting UI.Vision Macro...</h3>
 
-<!-- MACRO TABLE -->
-<table id="macro">
-<tr><td>store</td><td>true</td><td>!errorignore</td></tr>
-<tr><td>open</td><td>https://adlinksumo.com/LnbbH29i</td><td></td></tr>
-<tr><td>waitForElementPresent</td><td>xpath=//body</td><td>5</td></tr>
-
-<tr><td>while_v2</td><td>true</td><td></td></tr>
-
-<tr><td>executeScript</td>
-<td>
-if(!window._fastInit){
-window._fastInit=true;
-const a=window.setTimeout;
-window.setTimeout=(f,t)=>a(f,0);
-const b=window.setInterval;
-window.setInterval=(f,t)=>b(f,5);
-window._lastOpenedUrl='';
-window.open=()=>null;
-document.addEventListener('click',function(e){
-let a=e.target.closest('a');
-if(a&&a.target==='_blank'){
-e.preventDefault();
-e.stopPropagation();
-return false;
-}},true);
-window._linkList=['about:blank'];
-window._linkIndex=parseInt(localStorage.getItem('_linkIndex')||'0');
-window._linkLock=false;
-}
-document.querySelectorAll('a[target="_blank"]').forEach(e=>e.removeAttribute('target'));
-document.querySelectorAll('button,a').forEach(e=>{
-e.disabled=false;
-e.removeAttribute('disabled')
-});
-document.querySelectorAll('[class*=wait],[id*=wait],[class*=overlay],[id*=overlay]').forEach(e=>e.remove());
-if(window.countdown)window.countdown=0;
-if(window.timeleft)window.timeleft=0;
-</td>
-<td></td>
-</tr>
-
-<tr><td>executeScript</td>
-<td>
-var els=document.querySelectorAll('a,button,span');
-var openBtn=null,goBtn=null,nextBtn=null,linkLabel=null;
-for(let e of els){
-let t=(e.innerText||e.textContent||'').trim();
-if(!linkLabel&&t==='OPEN LINK')linkLabel=e;
-else if(!openBtn&&t==='Open')openBtn=e;
-else if(!goBtn&&t==='Go to Link')goBtn=e;
-else if(!nextBtn&&t==='Next')nextBtn=e;
-}
-var act=function(el,click){
-var t=(el.tagName.toLowerCase()==='span')?el.closest('button'):el;
-if(!t)return;
-window.scrollTo(0,t.getBoundingClientRect().top+window.scrollY-80);
-if(click)t.click();
-};
-if(linkLabel){
-if(window._linkLock) return 'link';
-window._linkLock=true;
-if(window._linkList&&window._linkList.length>0){
-var url=window._linkList[window._linkIndex%window._linkList.length];
-window._linkIndex++;
-localStorage.setItem('_linkIndex',window._linkIndex);
-window.location.href=url;
-}
-return 'link';
-}
-if(openBtn){act(openBtn,true);return 'open';}
-if(goBtn){act(goBtn,true);return 'go';}
-if(nextBtn){act(nextBtn,true);return 'next';}
-</td>
-<td></td>
-</tr>
-
-<tr><td>end</td><td></td><td></td></tr>
-</table>
+<button onclick="openTabs()">Buka Semua Tab</button>
 
 <script>
-(function() {
+function openTabs() {
+  const links = [
+    "https://adlinksumo.com/azJHmXuO",
+    "https://adlinksumo.com/C8hLD",
+    "https://adlinksumo.com/cqeo3p",
+    "https://adlinksumo.com/jUEIA9d",
+    "https://adlinksumo.com/kNKn3sMq",
+    "https://adlinksumo.com/COFcnA",
+    "https://adlinksumo.com/D8xHc",
+    "https://adlinksumo.com/pEAQ9ZG1",
+    "https://adlinksumo.com/aWym",
+    "https://adlinksumo.com/VcxJ1c2"
+  ];
 
-  function isExtensionLoaded() {
-    return document.documentElement.getAttribute('data-kantu');
-  }
-
-  function runMacro() {
-    var evt = new CustomEvent('kantuSaveAndRunMacro', {
-      detail: {
-        html: document.documentElement.outerHTML,
-        storageMode: 'browser',
-        noImport: true
-      }
-    });
-
-    window.dispatchEvent(evt);
-  }
-
-  function waitForExtension() {
-    let tries = 0;
-    let maxTries = 15;
-
-    let interval = setInterval(function() {
-      if (isExtensionLoaded()) {
-        clearInterval(interval);
-        console.log("UI.Vision ready, running macro...");
-        runMacro();
-      } else {
-        tries++;
-        console.log("Waiting UI.Vision...", tries);
-        if (tries > maxTries) {
-          clearInterval(interval);
-          alert("UI.Vision tidak terdeteksi. Pastikan extension aktif & allow file URL.");
-        }
-      }
-    }, 1000); // delay 1 detik tiap cek
-  }
-
-  // DELAY AWAL (penting)
-  setTimeout(waitForExtension, 3000);
-
-})();
+  links.forEach((url, index) => {
+    setTimeout(() => {
+      window.open(url, "_blank");
+    }, index * 800);
+  });
+}
 </script>
 
 </body>
