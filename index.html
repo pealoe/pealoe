@@ -1,50 +1,13 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Copy Link</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-        }
-        .container {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: grid;
-            grid-template-columns: repeat(5, auto);
-            gap: 5px;
-        }
-        button {
-            padding: 5px 8px;
-            font-size: 12px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Auto Close</title>
+    <script>
+        window.onload = function() {
+            window.close();
+        };
+    </script>
 </head>
 <body>
-
-<div class="container">
-    <button onclick="copyLink('https://adlinksumo.com/azJHmXuO')">1</button>
-    <button onclick="copyLink('https://adlinksumo.com/C8hLD')">2</button>
-    <button onclick="copyLink('https://adlinksumo.com/cqeo3p')">3</button>
-    <button onclick="copyLink('https://adlinksumo.com/jUEIA9d')">4</button>
-    <button onclick="copyLink('https://adlinksumo.com/kNKn3sMq')">5</button>
-
-    <button onclick="copyLink('https://adlinksumo.com/COFcnA')">6</button>
-    <button onclick="copyLink('https://adlinksumo.com/D8xHc')">7</button>
-    <button onclick="copyLink('https://adlinksumo.com/pEAQ9ZG1')">8</button>
-    <button onclick="copyLink('https://adlinksumo.com/aWym')">9</button>
-    <button onclick="copyLink('https://adlinksumo.com/VcxJ1c2')">10</button>
-</div>
-
-<script>
-function copyLink(url) {
-    navigator.clipboard.writeText(url);
-}
-</script>
-
 </body>
 </html>
