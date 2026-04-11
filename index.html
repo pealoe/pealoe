@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Link</title>
+    <title>Copy Link</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,26 +18,59 @@
             font-size: 12px;
             cursor: pointer;
         }
+
+        /* Toast */
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        #toast.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <button onclick="openLink('https://adlinksumo.com/azJHmXuO')">1</button>
-    <button onclick="openLink('https://adlinksumo.com/C8hLD')">2</button>
-    <button onclick="openLink('https://adlinksumo.com/cqeo3p')">3</button>
-    <button onclick="openLink('https://adlinksumo.com/jUEIA9d')">4</button>
-    <button onclick="openLink('https://adlinksumo.com/kNKn3sMq')">5</button>
-    <button onclick="openLink('https://adlinksumo.com/COFcnA')">6</button>
-    <button onclick="openLink('https://adlinksumo.com/D8xHc')">7</button>
-    <button onclick="openLink('https://adlinksumo.com/pEAQ9ZG1')">8</button>
-    <button onclick="openLink('https://adlinksumo.com/aWym')">9</button>
-    <button onclick="openLink('https://adlinksumo.com/VcxJ1c2')">10</button>
+    <button onclick="copyLink('https://adlinksumo.com/azJHmXuO')">1</button>
+    <button onclick="copyLink('https://adlinksumo.com/C8hLD')">2</button>
+    <button onclick="copyLink('https://adlinksumo.com/cqeo3p')">3</button>
+    <button onclick="copyLink('https://adlinksumo.com/jUEIA9d')">4</button>
+    <button onclick="copyLink('https://adlinksumo.com/kNKn3sMq')">5</button>
+    <button onclick="copyLink('https://adlinksumo.com/COFcnA')">6</button>
+    <button onclick="copyLink('https://adlinksumo.com/D8xHc')">7</button>
+    <button onclick="copyLink('https://adlinksumo.com/pEAQ9ZG1')">8</button>
+    <button onclick="copyLink('https://adlinksumo.com/aWym')">9</button>
+    <button onclick="copyLink('https://adlinksumo.com/VcxJ1c2')">10</button>
 </div>
 
+<div id="toast">Link disalin!</div>
+
 <script>
-function openLink(url) {
-    window.location.href = url;
+function copyLink(url) {
+    navigator.clipboard.writeText(url).then(() => {
+        showToast('Link disalin!');
+    }).catch(() => {
+        showToast('Gagal menyalin');
+    });
+}
+
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 1500);
 }
 </script>
 
