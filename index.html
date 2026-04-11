@@ -1,32 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Open Tabs</title>
+    <meta charset="UTF-8">
+    <title>Daftar Link</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 30px;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-<button onclick="openTabs()">Buka Semua Tab</button>
+<h2>Daftar Link</h2>
+
+<button onclick="openLink('https://adlinksumo.com/azJHmXuO')">Link 1</button>
+<button onclick="openLink('https://adlinksumo.com/C8hLD')">Link 2</button>
+<button onclick="openLink('https://adlinksumo.com/cqeo3p')">Link 3</button>
+<button onclick="openLink('https://adlinksumo.com/jUEIA9d')">Link 4</button>
+<button onclick="openLink('https://adlinksumo.com/kNKn3sMq')">Link 5</button>
+<button onclick="openLink('https://adlinksumo.com/COFcnA')">Link 6</button>
+<button onclick="openLink('https://adlinksumo.com/D8xHc')">Link 7</button>
+<button onclick="openLink('https://adlinksumo.com/pEAQ9ZG1')">Link 8</button>
+<button onclick="openLink('https://adlinksumo.com/aWym')">Link 9</button>
+<button onclick="openLink('https://adlinksumo.com/VcxJ1c2')">Link 10</button>
 
 <script>
-function openTabs() {
-  const links = [
-    "https://adlinksumo.com/azJHmXuO",
-    "https://adlinksumo.com/C8hLD",
-    "https://adlinksumo.com/cqeo3p",
-    "https://adlinksumo.com/jUEIA9d",
-    "https://adlinksumo.com/kNKn3sMq",
-    "https://adlinksumo.com/COFcnA",
-    "https://adlinksumo.com/D8xHc",
-    "https://adlinksumo.com/pEAQ9ZG1",
-    "https://adlinksumo.com/aWym",
-    "https://adlinksumo.com/VcxJ1c2"
-  ];
-
-  links.forEach((url, index) => {
-    setTimeout(() => {
-      window.open(url, "_blank");
-    }, index * 800);
-  });
+function openLink(url) {
+    window.open(url, '_blank');
 }
 </script>
 
